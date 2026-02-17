@@ -16,7 +16,7 @@ const __dirname = path.resolve();
 app.use(cookieParser()); // to parse cookies from the request headers
 app.use(express.json({ limit: '10mb' })); // to extract json data from request body, increased limit
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL : 'http://localhost:5173',
     credentials: true
 }));
 
